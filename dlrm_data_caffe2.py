@@ -723,7 +723,7 @@ def read_trace_from_file(file_path):
                 array = np.fromfile(f, dtype=np.uint64)
                 trace = array.astype(np.uint64).tolist()
             else:
-                line = f.readline()
+                line = f.readline(5_000_000)
                 trace = list(map(lambda x: np.uint64(x), line.split(", ")))
             return trace
     except Exception:
